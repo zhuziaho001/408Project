@@ -1,6 +1,5 @@
 #include "SingleLinkList.h"
 
-
 /************************
 *名称:isEmpty
 *功能:判断是否为NULL
@@ -22,11 +21,11 @@ int InitList(LinkList **L)
     *L = (LinkList *)malloc(sizeof(LinkList));
     if (!isEmpty(*L))
     {
-        printf("初始化成功\n");
+        printf("初始化成功!\n");
     }
     else
     {
-        printf("初始化失败\n");
+        printf("初始化失败!\n");
         return 0;
     }
 
@@ -77,18 +76,17 @@ LinkList *HeadInsert(LinkList *L)
 ************************/
 LinkList *TailInsert(LinkList *L)
 {
-    LinkList *temp;
-    LinkList *tail = L;
-    int t;
-    scanf("%d", &t);
-    while (t != -1)
+    LinkList *s, *r = L;
+    int x;
+    scanf("%d", &x);
+    while (x != -1)
     {
-        temp = (LinkList *)malloc(sizeof(LinkList));
-        temp->data = t;
-        tail->next = temp;
-        tail = temp;
-        scanf("%d", &t);
+        s = (LinkList *)malloc(sizeof(LinkList));
+        s->data = x;
+        r->next = s;
+        r = s;
+        scanf("%d", &x);
     }
-    tail->next = NULL;
+    r->next = NULL;
     return L;
 }

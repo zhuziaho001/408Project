@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #define InitSize 50
 #define ElemType int
 #define MaxSize 100
@@ -19,13 +20,16 @@ int LocateElem(SqList *L, ElemType e);
 
 int main()
 {
-	SqList *sqList=(SqList*)malloc(sizeof(SqList));
+	SqList *sqList = (SqList *)malloc(sizeof(SqList));
 	ListInit(sqList, InitSize, MaxSize);
-	 ListInsert(sqList, 5, 2);
-	 ListErgodic(sqList);
-	 ListDelete(sqList, 5);
-	 ListErgodic(sqList);
-	 printf("7的位置在下标%d\n", LocateElem(sqList, 7) );
+	ListInsert(sqList, 5, 2);
+	ListErgodic(sqList);
+	ListDelete(sqList, 5);
+	ListErgodic(sqList);
+	printf("7的位置在下标%d\n", LocateElem(sqList, 7));
+
+	printf("\n");
+	system("pause");
 	return 0;
 }
 /************************
@@ -37,7 +41,7 @@ int main()
 ************************/
 void ListInit(SqList *L, int len, int maxSize)
 {
-	L->data = (ElemType*)malloc(sizeof(ElemType)*len);
+	L->data = (ElemType *)malloc(sizeof(ElemType) * len);
 	L->length = len;
 	L->maxSize = maxSize;
 	for (int i = 0; i < L->length; i++)
@@ -72,7 +76,7 @@ void ListIncreaseSize(SqList *L, int len)
 
 	printf("扩展前length=%d\n", L->length);
 	ElemType *temp = L->data;
-	L->data = (ElemType*)malloc(sizeof(ElemType)*(L->length + len));
+	L->data = (ElemType *)malloc(sizeof(ElemType) * (L->length + len));
 	for (int i = 0; i < L->length; i++)
 	{
 		L->data[i] = temp[i];
