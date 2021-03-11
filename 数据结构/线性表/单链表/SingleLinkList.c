@@ -70,6 +70,7 @@ LinkList *HeadInsert(LinkList *L)
     }
     return L;
 }
+
 /************************
 *名称:TailInsert
 *功能:尾插法
@@ -89,4 +90,85 @@ LinkList *TailInsert(LinkList *L)
     }
     r->next = NULL;
     return L;
+}
+/************************
+*名称:GetElem
+*功能:查找第i个值
+************************/
+LinkList *GetElem(LinkList *L, int i)
+{
+    int j = 1;
+    LinkList *p = L->next;
+    if (i == 0)
+    {
+        return L;
+    }
+    if (i < 1)
+    {
+        return NULL;
+    }
+    while (p && j < i)
+    {
+        p = p->next;
+        j++;
+    }
+    return p;
+}
+/************************
+*名称:LocatElem
+*功能:按值查找
+************************/
+LinkList *LocateElem(LinkList *L, int i)
+{
+    LinkList *p = L->next;
+    while (p != NULL && p->data != i)
+    {
+        p = p->next;
+    }
+    return p;
+}
+/************************
+*名称:LinkInsert
+*功能:插入节点
+*参数1:源节点
+*参数2:插入节点
+************************/
+LinkList *LinkInsert(LinkList *L1, LinkList *L2, int i)
+{
+    LinkList *p = GetElem(L1, i - 1);
+    (L2)->next = p->next;
+    p->next = L2;
+    return L1;
+}
+
+/************************
+*名称:LinkDelete
+*功能:删除节点
+*参数1:链表
+*参数2:位置
+************************/
+LinkList *LinkDelete(LinkList *L, int i)
+{
+    LinkList *p = GetElem(L, i - 1);
+    LinkList *t = p->next;
+    p->next = t->next;
+    free(t);
+    return L;
+}
+/************************
+*名称:GetLinkLength
+*功能:求表长
+*参数1:
+*参数2:
+************************/
+int GetLinkLength(LinkList *L)
+{
+    int i = 0;
+    LinkList *p = L;
+    while (p && p->next != NULL)
+    {
+        i++;
+        p = p->next;
+    }
+    return i;
 }
