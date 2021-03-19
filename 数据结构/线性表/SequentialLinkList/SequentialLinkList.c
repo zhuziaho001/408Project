@@ -26,18 +26,18 @@ int main()
 	ListErgodic(sqList);
 	ListDelete(sqList, 5);
 	ListErgodic(sqList);
-	printf("7µÄÎ»ÖÃÔÚÏÂ±ê%d\n", LocateElem(sqList, 7));
+	printf("7çš„ä½ç½®åœ¨ä¸‹æ ‡%d\n", LocateElem(sqList, 7));
 
 	printf("\n");
 	system("pause");
 	return 0;
 }
 /************************
-*Ãû³Æ:ListInit
-*¹¦ÄÜ:³õÊ¼»¯ÏßĞÔ±í
-*²ÎÊı1:½á¹¹ÌåÊ×µØÖ·
-*²ÎÊı2:³õÊ¼»¯³¤¶È
-*¸´ÔÓ¶È:O(n)
+*åç§°:ListInit
+*åŠŸèƒ½:åˆå§‹åŒ–çº¿æ€§è¡¨
+*å‚æ•°1:ç»“æ„ä½“é¦–åœ°å€
+*å‚æ•°2:åˆå§‹åŒ–é•¿åº¦
+*å¤æ‚åº¦:O(n)
 ************************/
 void ListInit(SqList *L, int len, int maxSize)
 {
@@ -48,13 +48,13 @@ void ListInit(SqList *L, int len, int maxSize)
 	{
 		L->data[i] = i;
 	}
-	printf("³õÊ¼»¯½á¹¹Ìå³É¹¦\n");
+	printf("åˆå§‹åŒ–ç»“æ„ä½“æˆåŠŸ\n");
 }
 /************************
-*Ãû³Æ:ListErgodic
-*¹¦ÄÜ:±éÀúÊı×é
-*²ÎÊı1:Êı×é
-*¸´ÔÓ¶È:O(n)
+*åç§°:ListErgodic
+*åŠŸèƒ½:éå†æ•°ç»„
+*å‚æ•°1:æ•°ç»„
+*å¤æ‚åº¦:O(n)
 ************************/
 void ListErgodic(SqList *L)
 {
@@ -65,16 +65,16 @@ void ListErgodic(SqList *L)
 	printf("\n");
 }
 /************************
-*Ãû³Æ:ListIncreaseSize
-*¹¦ÄÜ:Ôö¼Ó³¤¶È
-*²ÎÊı1:½á¹¹Ìå
-*²ÎÊı2:À©Õ¹³¤¶È
-*¸´ÔÓ¶È:O(n)
+*åç§°:ListIncreaseSize
+*åŠŸèƒ½:å¢åŠ é•¿åº¦
+*å‚æ•°1:ç»“æ„ä½“
+*å‚æ•°2:æ‰©å±•é•¿åº¦
+*å¤æ‚åº¦:O(n)
 ************************/
 void ListIncreaseSize(SqList *L, int len)
 {
 
-	printf("À©Õ¹Ç°length=%d\n", L->length);
+	printf("æ‰©å±•å‰length=%d\n", L->length);
 	ElemType *temp = L->data;
 	L->data = (ElemType *)malloc(sizeof(ElemType) * (L->length + len));
 	for (int i = 0; i < L->length; i++)
@@ -83,15 +83,15 @@ void ListIncreaseSize(SqList *L, int len)
 	}
 	L->length += len;
 	free(temp);
-	printf("À©Õ¹ºólength=%d\n", L->length);
+	printf("æ‰©å±•ålength=%d\n", L->length);
 }
 /************************
-*Ãû³Æ:ListInsert
-*¹¦ÄÜ:²åÈëÊı¾İ
-*²ÎÊı1:½á¹¹Ìå
-*²ÎÊı2:²åÈëÏÂ±ê
-*²ÎÊı3:²åÈëÊı¾İ
-*¸´ÔÓ¶È:O(n)
+*åç§°:ListInsert
+*åŠŸèƒ½:æ’å…¥æ•°æ®
+*å‚æ•°1:ç»“æ„ä½“
+*å‚æ•°2:æ’å…¥ä¸‹æ ‡
+*å‚æ•°3:æ’å…¥æ•°æ®
+*å¤æ‚åº¦:O(n)
 ************************/
 int ListInsert(SqList *L, int i, ElemType e)
 {
@@ -101,7 +101,7 @@ int ListInsert(SqList *L, int i, ElemType e)
 	}
 	if (L->length >= MaxSize)
 	{
-		//Î»ÖÃÒÑÂú
+		//ä½ç½®å·²æ»¡
 		return 0;
 	}
 	ListIncreaseSize(L, 1);
@@ -112,21 +112,21 @@ int ListInsert(SqList *L, int i, ElemType e)
 	L->data[i] = e;
 	if (L->data[i] == e)
 	{
-		printf("%dºÅÎ»²åÈëÊı¾İ%d³É¹¦\n", i, L->data[i]);
+		printf("%då·ä½æ’å…¥æ•°æ®%dæˆåŠŸ\n", i, L->data[i]);
 		return 1;
 	}
 	else
 	{
-		printf("%dºÅÎ»²åÈëÊı¾İ%dÊ§°Ü\n", i, e);
+		printf("%då·ä½æ’å…¥æ•°æ®%då¤±è´¥\n", i, e);
 		return 0;
 	}
 }
 /************************
-*Ãû³Æ:ListDelete
-*¹¦ÄÜ:É¾³ıÏÂ±ê
-*²ÎÊı1:Êı×é
-*²ÎÊı2:ÏÂ±ê
-*¸´ÔÓ¶È:O(n)
+*åç§°:ListDelete
+*åŠŸèƒ½:åˆ é™¤ä¸‹æ ‡
+*å‚æ•°1:æ•°ç»„
+*å‚æ•°2:ä¸‹æ ‡
+*å¤æ‚åº¦:O(n)
 ************************/
 int ListDelete(SqList *L, int i)
 {
@@ -138,20 +138,20 @@ int ListDelete(SqList *L, int i)
 	ListIncreaseSize(L, -1);
 	if (L->data[i] == t)
 	{
-		printf("%dºÅÎ»É¾³ıÊı¾İ³É¹¦\n", i);
+		printf("%då·ä½åˆ é™¤æ•°æ®æˆåŠŸ\n", i);
 		return 1;
 	}
 	else
 	{
-		printf("%dºÅÎ»É¾³ıÊı¾İÊ§°Ü\n", i);
+		printf("%då·ä½åˆ é™¤æ•°æ®å¤±è´¥\n", i);
 		return 0;
 	}
 }
 /************************
-*Ãû³Æ:LocateElem
-*¹¦ÄÜ:°´Öµ²éÕÒ
-*²ÎÊı1:Êı×é
-*²ÎÊı2:ÔªËØ
+*åç§°:LocateElem
+*åŠŸèƒ½:æŒ‰å€¼æŸ¥æ‰¾
+*å‚æ•°1:æ•°ç»„
+*å‚æ•°2:å…ƒç´ 
 ************************/
 int LocateElem(SqList *L, ElemType e)
 {
